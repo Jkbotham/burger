@@ -1,7 +1,7 @@
 
 
 
-#Burger Application V0.5
+# //--Burger Application V1.0--//
 
 Application to track different types of burgers the user wants to eat.
 
