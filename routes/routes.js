@@ -7,8 +7,10 @@ module.exports = function(app){
 //HTML Routes
 //----------------------------------------------
     app.get("/", function (req, res){
-        db.Burgers.findAll({}).then(function(results){
-        res.render("index", {bugers: results})
+        db.Burger.findAll({
+        }).then(function(results){
+        //   console.log(JSON.stringify(results))
+        res.render("index", {burger: results})
         })
     })
 //----------------------------------------------
@@ -17,30 +19,35 @@ module.exports = function(app){
 
 //API Routes
 //----------------------------------------------
-
-    app.post("/api/new", function(req, res){
-        db.Burger.create({
-            name: req.body.name,
-            devoured: req.body.devoured
-        }).then(function(burger){console.log(burger)})
-    })
-
-    app.post("api/:id", function(req, res){
-
-        const reqBurger = {
-            id: req.body.id,
-            name: req.body.name,
-            devoured: req.body.devoured
-        }
-        
-        db.Burger.update(reqBurger, {
-            where: {
-                id: reqBurger.id
-            }
-        }).then(function(update){
-            console.log(update)
+    
+    // Creates new entery in database
+    //----------------------------------------------
+        app.post("/api/new", function(req, res){
+            console.log(req.body)
+            db.Burger.create({
+                name: req.body.name,
+                devoured: req.body.devoured
+            }).then(function(results){
+                res.end();
+            })
         })
-    })
-}
 
+    // Updates burgers to Devoured in database
+    //----------------------------------------------
+        app.post("/api/", function(req, res){
+
+            const reqBurger = {
+                name: req.body.name,
+                devoured: true
+            }
+        
+            db.Burger.update(reqBurger, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(){
+                res.end();
+            })
+        })
+}
 //----------------------------------------------

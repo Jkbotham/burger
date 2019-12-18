@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Datatype){
 
-const Burger = sequelize.define("Buger", {
+let Burger = sequelize.define("Burger", {
     name: Datatype.STRING,
     devoured: Datatype.BOOLEAN
 });
