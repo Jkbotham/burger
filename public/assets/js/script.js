@@ -1,6 +1,8 @@
+// const e = require("express");
 
 
 $(document).ready(function() {
+
 
     // Posts burger name to server to be saved in database
     //----------------------------------------------
@@ -27,8 +29,13 @@ $(document).ready(function() {
              name: $(this).data().name
         }
 
-        $.post("/api/", burgerData).then(function(){
+        $.post("/api/", burgerData).then(function(err){
+            if(err){ console.log(err)}
+            
             window.location.reload();
+        })
+        .catch(err => {
+            console.log(err, "helo");
         })
     })
 })

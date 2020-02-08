@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <H1>Hamburger List</H1>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Burgers Waiting To Be Devoured</h2>
+                <br>
+                <br>
+                <ul>
+                    {{#each burger}}
+                    {{#unless devoured}}
+                    <div class="row">
+
+                        <div class="col-md-12 center">
+                            <button class="button burgerBtn left center" data-name="{{this.name}}" data-id="{{this.id}}"
+                                data-devoured="{{this.devoured}}">DEVOUR THIS BURGER:
+                                <hr>{{this.name}}</button>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <img class="img" src="/assets/img/hamburger.png" alt="Hamburger graphic">
+            </div>
+            <div class="col-md-4">
+                <h2>Devoured Burgers</h2>
+                <br>
+                <ul>
+                    {{#each burger}}
+                    {{#if devoured}}
+                    <h4>{{this.name}}</h4>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 center">
+        <br>
+        <form>
+            <input type="text" id="newBurger" name="newBurger" placeholder="Enter a New Tasty Burger"><br>
+            <br>
+            <button type="submit" class="button subButton" style="margin:0px auto; display:block;">Submit</button>
+        </form>
+    </div>
+</div>
